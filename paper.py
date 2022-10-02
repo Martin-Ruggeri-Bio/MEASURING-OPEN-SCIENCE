@@ -1,12 +1,13 @@
 class Paper():
-    def __init__(self, titulo, author, category, email, country, date, institution):
-        self.titulo = titulo
+    def __init__(self, title, author, category, email, country, date, institution, open_access):
+        self.title = title
         self.author = author
         self.email = email
         self.category = category
         self.country = country
         self.institution = institution
         self.date = date
+        self.open_access = open_access
 
         self.citations = []
         self.count_citations = 0
@@ -28,7 +29,7 @@ class Paper():
 
     def __str__(self):
         cadena=f""" Metrica del Paper
-        Titulo: {self.titulo}\n
+        title: {self.title}\n
         Author: {self.author}\n
         Category: {self.category}\n
         Country: {self.country}\n
@@ -55,26 +56,26 @@ class Paper():
         return cadena
     
     def add_citations(self, paper):
-        self.citations.append(paper.titulo)
+        self.citations.append(paper.title)
         self.count_citations += 1
         if paper.country == self.country:
-            self.national_citations.append(paper.titulo)
+            self.national_citations.append(paper.title)
             self.count_national_citations += 1
         else:
-            self.international_citations.append(paper.titulo)
+            self.international_citations.append(paper.title)
             self.count_international_citations += 1
         self.country_citations.append(paper.country)
         self.institution_citations.append(paper.institution)
         paper.increment_citators(self)
 
     def increment_citators(self, summoner):
-        self.citators.append(summoner.titulo)
+        self.citators.append(summoner.title)
         self.count_citators += 1
         if summoner.country == self.country:
-            self.national_citators.append(summoner.titulo)
+            self.national_citators.append(summoner.title)
             self.count_national_citators += 1
         else:
-            self.international_citators.append(summoner.titulo)
+            self.international_citators.append(summoner.title)
             self.count_international_citators += 1
         self.country_citators.append(summoner.country)
         self.institution_citators.append(summoner.institution)
@@ -83,22 +84,22 @@ class Paper():
         citations = ""
         if len(self.citations) > 0:
             for citation in self.citations:
-                if citation.titulo:
-                    citations += f"\t{citation.titulo}\n"
+                if citation.title:
+                    citations += f"\t{citation.title}\n"
                 else:
                     citations += "\t\tNo tiene\n"
         else:
             citations += "\t\tNo tiene\n"
-        return citations.titulo
+        return citations.title
 
     def list_citators(self):
         citators = ""
         if len(self.citators) > 0:
             for summoner in self.citators:
-                if summoner.titulo:
-                    citators += f"\t{summoner.titulo}\n"
+                if summoner.title:
+                    citators += f"\t{summoner.title}\n"
                 else:
                     citators += "\t\tNo tiene\n"
         else:
             citators += "\t\tNo tiene\n"
-        return citators.titulo
+        return citators.title
