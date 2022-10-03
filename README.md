@@ -19,3 +19,7 @@
 # Data Cience
 
 	Aqui se aplican los distintos filtros y se crean las metricas de ciencia abierta con distintas funciones para crear distintos dataframes y guardarlos en archivos csv que se enviaran a software de data analist como data estudio para generar graficas para representar la informacion de forma amigable
+
+# Data Analist
+	Aqui se muestran graficas para representar algunas de las tablas creadas, se adjunta el link de data studio
+	https://datastudio.google.com/reporting/c0b4b8df-5ac1-46fa-9aee-162b30a2d6fe
