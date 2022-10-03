@@ -54,8 +54,8 @@ def calcular_open_access(json_papers):
     json_papers = json.dumps(json_papers)
     json_papers = json.loads(json_papers)
     df = json_normalize(json_papers)
-    open_access = df.groupby(['open_access'])
-    open_access = open_access.agg({'count_citations': 'sum', 'count_national_citations': 'sum', 'count_international_citations': 'sum','count_citators': 'sum', 'count_national_citators': 'sum', 'count_international_citators': 'sum',  'title': 'count'}).sort_values(by=['count_citators','count_international_citators'], ascending=False)
+    open_access = df.groupby(['country','open_access'])
+    open_access = open_access.agg({'count_citations': 'sum', 'count_national_citations': 'sum', 'count_international_citations': 'sum','count_citators': 'sum', 'count_national_citators': 'sum', 'count_international_citators': 'sum',  'title': 'count'})
     open_access = open_access.rename(columns={'title':'papers'})
     open_access['Indice_colaboracion_cientifica_internacional'] = open_access['count_international_citators']/open_access['papers']
     open_access['Indice_colaboracion_cientifica_nacional']  = open_access['count_national_citators']/open_access['papers']
@@ -71,7 +71,7 @@ def calcular_prestigio_author_de_una_institucion(json_papers):
     mask = (df['country'] == 'Argentina')
     prestigio_author=df.loc[mask]
     prestigio_author = prestigio_author.groupby(['author', 'email', 'institution'])
-    prestigio_author = prestigio_author.agg({'count_citators': 'sum', 'count_national_citators': 'sum', 'count_international_citators': 'sum',  'title': 'count'}).sort_values(by=['count_citators','count_international_citators'], ascending=False)
+    prestigio_author = prestigio_author.agg({'count_citators': 'sum', 'count_national_citators': 'sum', 'count_international_citators': 'sum',  'title': 'count'})
     prestigio_author = prestigio_author.rename(columns={'title':'papers'})
     prestigio_author['Indice_colaboracion_cientifica_internacional'] = prestigio_author['count_international_citators']/prestigio_author['papers']
     prestigio_author['Indice_colaboracion_cientifica_nacional']  = prestigio_author['count_national_citators']/prestigio_author['papers']
