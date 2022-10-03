@@ -4,7 +4,7 @@
 El procesador de papers genera de forma Random los datos de autores, sus papers y sus citas
 ## Procesador de Papers Real
 
-La busqueda de los papers se deberia realizar con web scraping en los repositorios publicos de google scholar.
+La busqueda de los papers se deberia realizar con web scraping en los repositorios publicos de la nasa, otras organizaciones espaciales y entidades pùblicas como google scholar.
 El procesamiento de los papers se deberia realizar con PNL en python con la libreria Pandas, Scikit-learn, XGBoost, TextBlog, Keras entre otras para poder obtener de los pdf los parametros necesarios para enviarle a la class Paper para mapear dichos datos
 
 ## Papers
